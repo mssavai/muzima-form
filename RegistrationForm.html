@@ -68,6 +68,29 @@
     </div>
     <div class="section">
         <h3>Identifiers</h3>
+            <div class="form-group">
+               <label for="patient.finger">Add fingerprint identifier</label>
+               <select class="form-control" id="patient.finger" name="patient.finger">
+                  <option value="">...</option>
+                  <option value="Right Thumb">Right Thumb</option>
+                  <option value="Left Thumb">Left Thumb</option>
+                  <option value="Right Index">Right Index</option>
+                  <option value="Left Index">Left Index</option>
+                  <option value="Right Middle">Right Middle</option>
+                  <option value="Left Middle">Left Middle</option>
+                  <option value="Right Ring">Right Ring</option>
+                  <option value="Left Ring">Left Ring</option>
+                  <option value="Right Small">Right Small</option>
+                  <option value="Left Small">Left Small</option>
+               </select>
+            </div>
+            <div class="form-group" id="fingerprint_scan">
+               <label for="patient.fingerprint">Fingerprint: <span class="required">*</span></label>
+               <div class="form-horizontal">
+                    <input type="button" class="btn fingerprint_btn">
+                    <input class="form-control barcode_text" id="patient.fingerprint" name="patient.fingerprint" type="text" required="required">
+                </div>
+            </div>
         <div class="form-group">
             <label for="patient.medical_record_number">AMRS Universal ID: <span
                     class="required">*</span></label>
@@ -268,6 +291,16 @@
                 validateConfirmIdentifierElement: true
             }
         });
+
+    $("#patient\\.finger").change(function(){
+        var selected_val = $(this).val();
+        if(selected_val == ""){
+            $("#fingerprint_scan").hide();
+        }else{
+            $("#fingerprint_scan").show();
+        }
+    });
+    $("#patient\\.finger").trigger('change');
 
     $('.patient\\.other_identifier_type').change(function(){
         var selected_val = $(this).val();
