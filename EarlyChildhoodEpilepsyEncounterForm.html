@@ -1,0 +1,494 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/muzima.css" rel="stylesheet">
+    <link href="css/ui-darkness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/additional-methods.min.js"></script>
+    <script src="js/muzima.js"></script>
+    <title>Early Childhood Epilepsy Form</title>
+    <style>
+    </style>
+</head>
+<body class="col-md-10 col-md-offset-1">
+<div id="pre_populate_data">
+</div>
+<form id="child_epilepsy_form" name="child_epilepsy_form">
+
+<h2 class="text-center">Early Childhood Epilepsy Encounter Form V0.01</h2>
+
+<div class="section">
+    <h3>Demographics</h3>
+    <div class="form-group">
+        <input class="form-control" id="patient.uuid"
+               name="patient.uuid" type="hidden" readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label for="patient.medical_record_number">Medical Record Number:</label>
+        <input class="form-control" id="patient.medical_record_number"
+               name="patient.medical_record_number" type="text" readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label for="patient.family_name">Family Name:</label>
+        <input class="form-control" id="patient.family_name" name="patient.family_name" type="text"
+               readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label for="patient.given_name">Given Name:</label>
+        <input class="form-control" id="patient.given_name" name="patient.given_name" type="text"
+               readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label for="patient.middle_name">Middle Name:</label>
+        <input class="form-control" id="patient.middle_name" name="patient.middle_name" type="text"
+               readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label for="patient.sex">Gender:</label>
+        <select required="required" class="form-control" id="patient.sex" name="patient.sex" disabled="disabled">
+            <option value="">...</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="patient.birth_date">Date Of Birth:</label>
+        <input class="form-control" id="patient.birth_date" name="patient.birth_date" type="text"
+               readonly="readonly" value="">
+    </div>
+</div>
+<div class="section">
+<h3>Encounter Details</h3>
+
+    <div class="form-group">
+        <label for="encounter.location_id">Encounter Location:<span class="required">*</span></label>
+        <input class="form-control" id="encounter.location_id" type="text"
+            placeholder="Start typing something..." required="required" name="tmp.location_id">
+        <input class="form-control" name="encounter.location_id" type="hidden">
+    </div>
+
+    <div class="form-group">
+        <label for="encounter.provider_id_select">Provider Name:<span class="required">*</span></label>
+        <input class="form-control" id="encounter.provider_id_select" type="text"
+        placeholder="Start typing something..." required="required" name="tmp.provider_id_select">
+        <input class="form-control" name="encounter.provider_id_select" type="hidden">
+    </div>
+
+    <div class="form-group show_provider_id_text">
+        <label for="encounter.provider_id">Provider system-id:<span class="required">*</span></label>
+        <input class="form-control checkDigit" id="encounter.provider_id" disabled name="encounter.provider_id"
+               type="text" required="required"  placeholder="Provider Id">
+    </div>
+    <div class="form-group">
+        <label for="encounter.encounter_datetime">Encounter Date:<span class="required">*</span></label>
+        <input class="form-control datepicker nonFutureDate" id="encounter.encounter_datetime"
+               name="encounter.encounter_datetime" type="text" readonly="readonly"
+               required="required">
+    </div>
+    <div class="form-group">
+        <input class="form-control" id="encounter.form_uuid" name="encounter.form_uuid"
+               type="hidden" required="required">
+    </div>
+</div>
+<div class="section">
+    <div class="form-group">
+        <label class="font-normal" for="obs.ever_had_seizure_fit_convulsion">
+            1. Has your child ever had a seizure, fit, or convulsion? <span class="required">*</span>
+        </label>
+        <select required="required" class="form-control" id="obs.ever_had_seizure_fit_convulsion"
+                name="obs.ever_had_seizure_fit_convulsion"
+                data-concept="164949^Seizure, fit, or convulsion^99DCT">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+            <option value="1067^UNKNOWN^99DCT">Unknown</option>
+        </select>
+    </div>
+    <div class="sub-section" id="seizure_fit_convulsion_details">
+        <div class="form-group" id="two_or_more_seizure_fit_convulsion">
+            <label class="font-normal" for="obs.two_or_more_seizure_fit_convulsion">
+                1a. Has she/he had two ore more episodes? <span class="required">*</span>
+            </label>
+            <select required="required" class="form-control" id="obs.two_or_more_seizure_fit_convulsion"
+                    name="obs.two_or_more_seizure_fit_convulsion"
+                    data-concept="164950^Two or more episodes of seizure, fit, or convulsion^99DCT">
+                <option value="">...</option>
+                <option value="1065^YES^99DCT">Yes</option>
+                <option value="1066^NO^99DCT">No</option>
+                <option value="1067^UNKNOWN^99DCT">Unknown</option>
+            </select>
+        </div>
+        <div class="form-group" id="episodes_without_fever">
+            <label class="font-normal" for="obs.episodes_without_fever">
+                1b. Has she/he had any episodes without a fever? <span class="required">*</span>
+            </label>
+            <select required="required" class="form-control" id="obs.episodes_without_fever"
+                    name="obs.episodes_without_fever"
+                    data-concept="164951^Episode of seizure, fit, or convulsion without fever^99DCT">
+                <option value="">...</option>
+                <option value="1065^YES^99DCT">Yes</option>
+                <option value="1066^NO^99DCT">No</option>
+                <option value="1067^UNKNOWN^99DCT">Unknown</option>
+            </select>
+        </div>
+        <div class="form-group" id="awareness_response_consciousness">
+            <label class="font-normal" for="obs.awareness_response_consciousness">
+                1c. Have these episodes been characterized by altered awareness,
+                inability to respond, or loss of consciousness? <span class="required">*</span>
+            </label>
+            <select required="required" class="form-control" id="obs.awareness_response_consciousness"
+                    name="obs.awareness_response_consciousness"
+                    data-concept="164952^Awareness, response, consciousness^99DCT">
+                <option value="">...</option>
+                <option value="1065^YES^99DCT">Yes</option>
+                <option value="1066^NO^99DCT">No</option>
+                <option value="1067^UNKNOWN^99DCT">Unknown</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="font-normal" for="obs.awareness_response_consciousness_duration">
+            2. Has your child ever had any episodes of altered awareness or
+            an inability to respond for a few seconds to a few minutes? <span class="required">*</span>
+        </label>
+        <select required="required" class="form-control" id="obs.awareness_response_consciousness_duration"
+                name="obs.awareness_response_consciousness_duration"
+                data-concept="164953^Awareness, response, consciousness duration^99DCT">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+            <option value="1067^UNKNOWN^99DCT">Unknown</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="font-normal" for="obs.shaking_or_twitching">
+            3. Do any of the following happen at any time during the episode: shaking/twitching of
+            one limb only, face only, or one side of the face only? <span class="required">*</span>
+        </label>
+        <select required="required" class="form-control" id="obs.shaking_or_twitching"
+                name="obs.shaking_or_twitching"
+                data-concept="164954^Shaking or twitching^99DCT">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+            <option value="1067^UNKNOWN^99DCT">Unknown</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="font-normal" for="obs.turn_or_jerk_sideway">
+            4. Does his/her eyes or head turn or jerk to one side during an episode?
+            <span class="required">*</span>
+        </label>
+        <select required="required" class="form-control" id="obs.turn_or_jerk_sideway"
+                name="obs.turn_or_jerk_sideway"
+                data-concept="164955^Turn or jerk to one side^99DCT">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+            <option value="1067^UNKNOWN^99DCT">Unknown</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="font-normal" for="obs.difficulty_using_one_side">
+            5. Does he/she have difficulty using one side of his/her body after the episode?
+            <span class="required">*</span>
+        </label>
+        <select required="required" class="form-control" id="obs.difficulty_using_one_side"
+                name="obs.difficulty_using_one_side"
+                data-concept="164956^Difficulty using one side of body^99DCT">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+            <option value="1067^UNKNOWN^99DCT">Unknown</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="font-normal" for="obs.difficulty_talking">
+            6. During an episode, does he/she try to talk but have difficulty and/or does
+            he/she appear confused? <span class="required">*</span>
+        </label>
+        <select required="required" class="form-control" id="obs.difficulty_talking"
+                name="obs.difficulty_talking"
+                data-concept="164957^Difficulty in talking^99DCT">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+            <option value="1067^UNKNOWN^99DCT">Unknown</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="font-normal" for="obs.can_answer_questions">
+            7. Can he/she answer questions during an episode? <span class="required">*</span>
+        </label>
+        <select required="required" class="form-control" id="obs.can_answer_questions"
+                name="obs.can_answer_questions"
+                data-concept="164958^Answer questions^99DCT">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+            <option value="1067^UNKNOWN^99DCT">Unknown</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="font-normal" for="obs.eyes_move_one_side">
+            8. Does his/her eyes always move to one side? <span class="required">*</span>
+        </label>
+        <select required="required" class="form-control" id="obs.eyes_move_one_side"
+                name="obs.eyes_move_one_side"
+                data-concept="164959^Eyes move to one side^99DCT">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+            <option value="1067^UNKNOWN^99DCT">Unknown</option>
+        </select>
+    </div>
+    <div class="sub-section" id="eyes_move_one_side_details">
+        <div class="form-group">
+            <label class="font-normal" for="obs.eyes_move_same_side">
+                8a. Is it the same side each time? <span class="required">*</span>
+            </label>
+            <select required="required" class="form-control" id="obs.eyes_move_same_side"
+                    name="obs.eyes_move_same_side"
+                    data-concept="164960^Eyes moves to same side each time^99DCT">
+                <option value="">...</option>
+                <option value="1065^YES^99DCT">Yes</option>
+                <option value="1066^NO^99DCT">No</option>
+                <option value="1067^UNKNOWN^99DCT">Unknown</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="font-normal" for="obs.head_move_one_direction">
+            9. Does their head always move in one direction? <span class="required">*</span> 
+        </label>
+        <select required="required" class="form-control" id="obs.head_move_one_direction"
+                name="obs.head_move_one_direction"
+                data-concept="164961^Head always moves to one direction^99DCT">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+            <option value="1067^UNKNOWN^99DCT">Unknown</option>
+        </select>
+    </div>
+    <div class="sub-section" id="head_move_one_direction_details">
+        <div class="form-group">
+            <label class="font-normal" for="obs.head_move_same_direction">
+                9a. Is it the same direction during each episode? <span class="required">*</span>
+            </label>
+            <select required="required" class="form-control" id="obs.head_move_same_direction"
+                    name="obs.head_move_same_direction"
+                    data-concept="164972^Head always moves to same direction^99DCT">
+                <option value="">...</option>
+                <option value="1065^YES^99DCT">Yes</option>
+                <option value="1066^NO^99DCT">No</option>
+                <option value="1067^UNKNOWN^99DCT">Unknown</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="font-normal" for="obs.unusual_smells_tastes_stomach_discomfort">
+            10. Does he/she describe any unusual smells, tastes, stomach discomfort,
+            nausea, or vomit before/during/after the episode? <span class="required">*</span>
+        </label>
+        <select required="required" class="form-control" id="obs.unusual_smells_tastes_stomach_discomfort"
+                name="obs.unusual_smells_tastes_stomach_discomfort"
+                data-concept="164962^Unusual smells, tastes, stomach discomfort^99DCT">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+            <option value="1067^UNKNOWN^99DCT">Unknown</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="font-normal" for="obs.unusual_vision">
+            11. Does he/she remember any unusual visions? <span class="required">*</span>
+        </label>
+        <select required="required" class="form-control" id="obs.unusual_vision"
+                name="obs.unusual_vision"
+                data-concept="164963^Unusual vision^99DCT">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+            <option value="1067^UNKNOWN^99DCT">Unknown</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="font-normal" for="obs.lose_contact_surrounding">
+            12. Does he/she lose contact with their surroundings? <span class="required">*</span>
+        </label>
+        <select required="required" class="form-control" id="obs.lose_contact_surrounding"
+                name="obs.lose_contact_surrounding"
+                data-concept="164964^Lose contact with surroundings^99DCT">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+            <option value="1067^UNKNOWN^99DCT">Unknown</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="font-normal" for="obs.repeating_same_phrase">
+            13. During an episode, do any of the following occur: blinking, smacking lips,
+            licking lips, chewing, swallowing, laughing, picking or fiddling with things,
+            walking or making stepping or bicycling movements, repeating the same phrase? <span class="required">*</span>
+        </label>
+        <select required="required" class="form-control" id="obs.repeating_same_phrase"
+                name="obs.repeating_same_phrase"
+                data-concept="164965^Repeating the same phrase^99DCT">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+            <option value="1067^UNKNOWN^99DCT">Unknown</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="font-normal" for="obs.odd_sensation">
+            14. Does he/she complain of any odd sensations (numbness, tingling, pins/needles) in
+            a part of his/her body during an episode? <span class="required">*</span>
+        </label>
+        <select required="required" class="form-control" id="obs.odd_sensation"
+                name="obs.odd_sensation"
+                data-concept="164966^Odd sensation^99DCT">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+            <option value="1067^UNKNOWN^99DCT">Unknown</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="font-normal" for="obs.predict_seizure_coming">
+            15. Are you or your child able to predict when an episode is going to occur? <span class="required">*</span>
+        </label>
+        <select required="required" class="form-control" id="obs.predict_seizure_coming"
+                name="obs.predict_seizure_coming"
+                data-concept="164968^Able to predict seizure is coming^99DCT">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+            <option value="1067^UNKNOWN^99DCT">Unknown</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="font-normal" for="obs.uncontrolled_sudden_jerks">
+            16. Does your child have isolated or repeated uncontrolled sudden jerks (with objects
+            being dropped from his/her hands) especially after awakening? <span class="required">*</span>
+        </label>
+        <select required="required" class="form-control" id="obs.uncontrolled_sudden_jerks"
+                name="obs.uncontrolled_sudden_jerks"
+                data-concept="164967^Uncontrolled sudden jerks^99DCT">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+            <option value="1067^UNKNOWN^99DCT">Unknown</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="font-normal" for="obs.sudden_cessation_action">
+            17. Does your child have episodes of sudden cessation of action, unresponsiveness to calling,
+            with eyes staring, lasting for a few seconds? <span class="required">*</span>
+        </label>
+        <select required="required" class="form-control" id="obs.sudden_cessation_action"
+                name="obs.sudden_cessation_action"
+                data-concept="164969^Sudden cessation of action^99DCT">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+            <option value="1067^UNKNOWN^99DCT">Unknown</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="font-normal" for="obs.sudden_head_drops">
+            18. Does your child have clusters of sudden head drops (or nodding), with or without his/her
+            arms elevating and extending, and/or with or without unexplained falls? <span class="required">*</span>
+        </label>
+        <select required="required" class="form-control" id="obs.sudden_head_drops"
+                name="obs.sudden_head_drops"
+                data-concept="164970^Clusters of sudden head drops^99DCT">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+            <option value="1067^UNKNOWN^99DCT">Unknown</option>
+        </select>
+    </div>
+    <div class="sub-section" id="sudden_head_drops_details">
+        <div class="form-group">
+            <label class="font-normal" for="obs.head_drops_direction">
+                18a. Direction of sudden head drops <span class="required">*</span>
+            </label>
+            <select required="required" class="form-control" id="obs.head_drops_direction"
+                    name="obs.head_drops_direction"
+                    data-concept="164971^Clusters of sudden head drops^99DCT">
+                <option value="">...</option>
+                <option value="5139^LEFT^99DCT">Left</option>
+                <option value="5141^RIGHT^99DCT">Right</option>
+                <option value="160406^BILATERAL^99DCT">Bilateral</option>
+                <option value="1067^UNKNOWN^99DCT">Unknown</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+</form>
+
+</body>
+<script type="text/javascript">
+
+$(document).ready(function () {
+
+    var dateFormat = "dd-mm-yy";
+    var currentDate = $.datepicker.formatDate(dateFormat, new Date());
+    var encounterDatetime = $('#encounter\\.encounter_datetime');
+    if ($(encounterDatetime).val() == "") {
+        $(encounterDatetime).val(currentDate);
+    }
+
+    document.setupAutoCompleteData('encounter\\.location_id');
+
+    document.setupAutoCompleteDataForProvider('encounter\\.provider_id_select');
+
+    $('#encounter\\.provider_id_select').change(function () {
+        if ($('#encounter\\.provider_id_select').val() === '') {
+            $('#encounter\\.provider_id').val('');
+            $('.show_provider_id_text').show();
+        }
+    });
+
+    document.setupValidationForProvider("$('#encounter\\.provider_id_select').val()","encounter\\.provider_id");
+
+    document.setupValidationForLocation("$('#encounter\\.location_id').val()","encounter\\.location_id");
+
+    var show_hide_objects = [
+        {"question":"#obs\\.ever_had_seizure_fit_convulsion", "related_section":"#seizure_fit_convulsion_details"},
+        {"question":"#obs\\.eyes_move_one_side", "related_section":"#eyes_move_one_side_details"},
+        {"question":"#obs\\.head_move_one_direction", "related_section":"#head_move_one_direction_details"},
+        {"question":"#obs\\.sudden_head_drops", "related_section":"#sudden_head_drops_details"}];
+    $.each(show_hide_objects, (k,v)=>{
+        $(v.question).change(()=>{
+            if($(v.question).val() == "1065^YES^99DCT"){
+                $(v.related_section).show();
+            } else {
+                $(v.related_section).hide();
+            }
+        });
+        $(v.question).trigger('change');        
+    });
+
+   $('#save_draft').click(function () {
+        $(this).prop('disabled', true);
+        document.saveDraft(this);
+        $(this).prop('disabled', false);
+    });
+
+    $('#submit_form').click(function () {
+        $(this).prop('disabled', true);
+        document.submit();
+        $(this).prop('disabled', false);
+    });
+    $('#child_epilepsy_form').validate();
+});
+
+</script>
+</html>
